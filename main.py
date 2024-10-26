@@ -13,12 +13,21 @@ GRID_HEIGHT = HEIGHT // TILE_SIZE
 FPS = 60
 
 pygame.init()
+pygame.font.init()
+font = pygame.font.SysFont('Comic Sans MS', 30)
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
 
 
 def gen_random(num):
     return set([(random.randrange(0, GRID_HEIGHT), random.randrange(0, GRID_WIDTH)) for _ in range(num)])
+
+
+def draw_text(gen):
+    text = font.render(f"Generation: {gen}", True, (180, 50, 30))
+    # text_rec = text.get_rect()
+    screen.blit(text, (10, 5))
 
 
 def draw_grid(positions, draw_grid_lines):
@@ -99,8 +108,7 @@ def main():
         caption = f"status:{run_status} ----- Generation={generation}"
         pygame.display.set_caption(caption)
 
-        # Get mouse input and draw cell
-        # keys = pygame.key.get_pressed()
+        # Get mouse input and draw cel
         if pygame.mouse.get_pressed()[0]:
             x, y = pygame.mouse.get_pos()
             pos = (x // TILE_SIZE, y // TILE_SIZE)
@@ -126,6 +134,7 @@ def main():
 
 
         screen.fill(BLACK)
+        draw_text(generation)
         draw_grid(positions, draw_grid_lines)
         pygame.display.update()
 
