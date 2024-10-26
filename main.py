@@ -7,7 +7,7 @@ BLACK = (15, 15, 15)
 YELLOW = (255, 255, 0)
 
 WIDTH, HEIGHT = 950, 800
-TILE_SIZE = 20
+TILE_SIZE = 10
 GRID_WIDTH = WIDTH // TILE_SIZE
 GRID_HEIGHT = HEIGHT // TILE_SIZE
 FPS = 60
@@ -112,13 +112,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            # if event.type == pygame.MOUSEBUTTONDOWN:
-            #     x, y = pygame.mouse.get_pos()
-            #     pos = (x // TILE_SIZE, y // TILE_SIZE)
-            #     if pos in positions:
-            #         positions.remove(pos)
-            #     else:
-            #         positions.add(pos)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     playing = not playing
